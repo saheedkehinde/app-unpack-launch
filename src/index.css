@@ -48,43 +48,43 @@
   }
 
   .dark {
-    /* Dark mode - main theme for TIMAK CENTRE */
-    --background: 357 60% 8%;
-    --foreground: 0 0% 95%;
+    /* Dark mode - TIMAK CENTRE Deep Luxury Maroon */
+    --background: 355 75% 5%;
+    --foreground: 30 20% 96%;
 
-    --card: 357 50% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 355 65% 8%;
+    --card-foreground: 30 20% 96%;
 
-    --popover: 357 50% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 355 65% 8%;
+    --popover-foreground: 30 20% 96%;
 
-    --primary: 357 97% 28%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 355 85% 18%;
+    --primary-foreground: 30 20% 98%;
 
-    --secondary: 357 40% 18%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 355 55% 12%;
+    --secondary-foreground: 30 20% 96%;
 
-    --muted: 357 30% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 355 45% 10%;
+    --muted-foreground: 30 10% 65%;
 
-    --accent: 40 60% 55%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 42 75% 50%;
+    --accent-foreground: 355 75% 5%;
 
-    --destructive: 0 62% 30%;
+    --destructive: 0 72% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 357 30% 20%;
-    --input: 357 30% 20%;
-    --ring: 40 60% 55%;
+    --border: 355 40% 15%;
+    --input: 355 40% 15%;
+    --ring: 42 75% 50%;
 
-    --sidebar-background: 357 50% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 40 60% 55%;
-    --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 357 40% 15%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 357 30% 18%;
-    --sidebar-ring: 40 60% 55%;
+    --sidebar-background: 355 70% 6%;
+    --sidebar-foreground: 30 20% 96%;
+    --sidebar-primary: 42 75% 50%;
+    --sidebar-primary-foreground: 355 75% 5%;
+    --sidebar-accent: 355 50% 10%;
+    --sidebar-accent-foreground: 30 20% 96%;
+    --sidebar-border: 355 35% 12%;
+    --sidebar-ring: 42 75% 50%;
   }
 }
 
@@ -174,5 +174,10 @@
 
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Safe area padding for iOS */
+  .pb-safe {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
   }
 }

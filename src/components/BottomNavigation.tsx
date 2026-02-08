@@ -14,9 +14,9 @@ export function BottomNavigation() {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-sidebar/95 backdrop-blur-md border-t border-sidebar-border safe-area-inset-bottom">
-      <div className="max-w-lg mx-auto px-4">
-        <div className="flex items-center justify-around py-2">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-background via-background/98 to-background/95 backdrop-blur-xl border-t border-border/50 pb-safe">
+      <div className="max-w-lg mx-auto px-2">
+        <div className="flex items-center justify-around py-1.5">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.href;
@@ -26,21 +26,24 @@ export function BottomNavigation() {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-300",
+                  "flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-2xl transition-all duration-300 min-w-[60px]",
                   isActive
                     ? "text-accent"
-                    : "text-sidebar-foreground/60 hover:text-sidebar-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 <div
                   className={cn(
-                    "p-2 rounded-xl transition-all duration-300",
-                    isActive && "bg-accent/20"
+                    "p-2 rounded-2xl transition-all duration-300",
+                    isActive && "bg-accent/20 shadow-lg shadow-accent/20"
                   )}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className={cn("w-5 h-5 transition-transform duration-300", isActive && "scale-110")} />
                 </div>
-                <span className="text-[10px] font-medium">{item.label}</span>
+                <span className={cn(
+                  "text-[9px] font-semibold uppercase tracking-wide transition-all duration-300",
+                  isActive && "text-accent"
+                )}>{item.label}</span>
               </Link>
             );
           })}

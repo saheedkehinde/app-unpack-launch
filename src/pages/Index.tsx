@@ -103,36 +103,50 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState("events");
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-primary via-primary/90 to-background pb-20">
+    <main className="min-h-screen bg-background pb-24">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[75vh] flex flex-col">
-        {/* Background Image */}
+      {/* Hero Section - Immersive Full-Screen */}
+      <section className="relative min-h-[85vh] flex flex-col overflow-hidden">
+        {/* Background Image with Parallax Effect */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&auto=format&fit=crop"
             alt="TIMAK CENTRE"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
           />
-          {/* Multi-layer gradient for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-sidebar" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
+          {/* Deep multi-layer gradient for luxury feel */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-primary/30" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,hsl(var(--background))_100%)]" />
         </div>
 
+        {/* Animated decorative elements */}
+        <div className="absolute top-20 right-4 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-40 left-0 w-48 h-48 bg-primary/30 rounded-full blur-3xl" />
+
         {/* Content */}
-        <div className="relative z-10 flex-1 flex flex-col justify-end px-4 pb-8 pt-24">
+        <div className="relative z-10 flex-1 flex flex-col justify-end px-5 pb-10 pt-28">
           <div className="max-w-lg mx-auto w-full">
-            {/* Welcome Text */}
-            <div className="mb-6 page-transition">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/20 border border-accent/30 backdrop-blur-sm mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-accent" />
-                <span className="text-xs text-accent font-medium">Welcome to Luxury</span>
+            {/* Welcome Badge */}
+            <div className="mb-5 page-transition">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 border border-accent/25 backdrop-blur-md mb-4 shadow-lg shadow-accent/10">
+                <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+                <span className="text-xs text-accent font-semibold uppercase tracking-widest">Premium Events</span>
               </div>
-              <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-3 drop-shadow-lg">
-                TIMAK CENTRE
+              
+              {/* Main Title */}
+              <h1 className="font-serif text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl leading-tight">
+                TIMAK
+                <span className="block text-accent">CENTRE</span>
               </h1>
-              <p className="text-white/70 text-sm flex items-center gap-2">
+              
+              {/* Tagline */}
+              <p className="text-foreground/80 text-base mb-3 font-medium">
+                Where Elegance Meets Excellence
+              </p>
+              
+              <p className="text-muted-foreground text-sm flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-accent" />
                 Ilorin, Kwara State, Nigeria
               </p>
@@ -148,8 +162,8 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-white/5 to-transparent pointer-events-none z-10" />
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
       </section>
 
       {/* Dynamic Content Based on Tab */}
