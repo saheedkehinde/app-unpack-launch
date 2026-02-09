@@ -4,13 +4,27 @@ import { BottomNavigation } from "@/components/BottomNavigation";
 import { BackButton } from "@/components/BackButton";
 import { SectionHeader } from "@/components/SectionHeader";
 
+// Gallery images - add more images here as needed
+import eventHall1 from "@/assets/gallery/event-hall-1.jpg";
+import eventHall2 from "@/assets/gallery/event-hall-2.jpg";
+import eventHall3 from "@/assets/gallery/event-hall-3.jpg";
+import birthdayStage from "@/assets/gallery/birthday-stage.jpg";
+import ceilingDecor from "@/assets/gallery/ceiling-decor.jpg";
+import hallOverview from "@/assets/gallery/hall-overview.jpg";
+import chandelier from "@/assets/gallery/chandelier.jpg";
+import weddingSetup1 from "@/assets/gallery/wedding-setup-1.jpg";
+import weddingSetup2 from "@/assets/gallery/wedding-setup-2.jpg";
+
 const galleryImages = [
-  { id: 1, title: "Grand Hall", category: "Venue" },
-  { id: 2, title: "Wedding Setup", category: "Events" },
-  { id: 3, title: "Restaurant Interior", category: "Dining" },
-  { id: 4, title: "Conference Room", category: "Corporate" },
-  { id: 5, title: "Luxury Suite", category: "Lodging" },
-  { id: 6, title: "Outdoor Garden", category: "Venue" },
+  { id: 1, title: "Grand Hall Setup", category: "Events", image: eventHall1 },
+  { id: 2, title: "Red Carpet Aisle", category: "Events", image: eventHall2 },
+  { id: 3, title: "Birthday Celebration", category: "Birthday", image: birthdayStage },
+  { id: 4, title: "Elegant Seating", category: "Events", image: eventHall3 },
+  { id: 5, title: "Ceiling Ambiance", category: "Venue", image: ceilingDecor },
+  { id: 6, title: "Hall Overview", category: "Venue", image: hallOverview },
+  { id: 7, title: "Crystal Chandelier", category: "Venue", image: chandelier },
+  { id: 8, title: "Wedding Reception", category: "Wedding", image: weddingSetup1 },
+  { id: 9, title: "Wedding Venue", category: "Wedding", image: weddingSetup2 },
 ];
 
 export default function Gallery() {
@@ -22,15 +36,20 @@ export default function Gallery() {
         <div className="max-w-lg mx-auto px-4">
           <SectionHeader title="Gallery" />
           <div className="grid grid-cols-2 gap-3 mt-6">
-            {galleryImages.map((image) => (
+            {galleryImages.map((item) => (
               <div
-                key={image.id}
+                key={item.id}
                 className="aspect-square bg-card border border-border rounded-xl overflow-hidden relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-3 left-3">
-                  <p className="text-xs text-accent font-medium">{image.category}</p>
-                  <p className="text-sm text-white font-semibold">{image.title}</p>
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <p className="text-xs text-accent font-medium">{item.category}</p>
+                  <p className="text-sm text-white font-semibold truncate">{item.title}</p>
                 </div>
               </div>
             ))}
