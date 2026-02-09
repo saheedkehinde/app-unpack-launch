@@ -12,12 +12,12 @@ export function AIChatButton({ onClick, className }: AIChatButtonProps) {
     <Button
       onClick={onClick}
       className={cn(
-        "fixed bottom-24 right-4 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-accent to-amber-500 hover:from-accent/90 hover:to-amber-500/90 shadow-lg animate-pulse-glow p-2",
+        "fixed bottom-24 right-4 z-40 w-14 h-14 rounded-full bg-white hover:bg-white/90 shadow-lg shadow-accent/30 animate-pulse-glow p-2 border-2 border-accent/50",
         className
       )}
       size="icon"
     >
-      <img src={timakLogo} alt="Timak AI" className="w-8 h-8 object-contain" />
+      <img src={timakLogo} alt="Timak AI" className="w-10 h-10 object-contain" />
     </Button>
   );
 }

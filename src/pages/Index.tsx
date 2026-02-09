@@ -227,8 +227,8 @@ const Index = () => {
             <>
               {/* Chat Section */}
               <div className="text-center py-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/30 to-accent/10 border border-accent/30 mb-4">
-                  <Sparkles className="w-8 h-8 text-accent" />
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/90 border border-accent/30 mb-4 shadow-lg">
+                  <img src={timakLogo} alt="Timak AI" className="w-12 h-12 object-contain" />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
                   Timak AI Assistant
@@ -237,7 +237,7 @@ const Index = () => {
                   Have questions about events, reservations, or services? Our AI is here to help 24/7.
                 </p>
                 <Button className="btn-book-now">
-                  <Sparkles className="w-4 h-4 mr-2" />
+                  <img src={timakLogo} alt="" className="w-5 h-5 object-contain mr-2" />
                   Start Chatting
                 </Button>
               </div>
@@ -373,8 +373,8 @@ const Index = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
             <div className="flex items-start gap-4 relative">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center shrink-0 border border-accent/30">
-                <Sparkles className="w-7 h-7 text-accent" />
+              <div className="w-14 h-14 rounded-2xl bg-white/90 flex items-center justify-center shrink-0 border border-accent/30 shadow-md">
+                <img src={timakLogo} alt="Timak AI" className="w-10 h-10 object-contain" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-serif text-lg font-semibold text-sidebar-foreground mb-1">
@@ -388,7 +388,7 @@ const Index = () => {
                   onClick={() => setActiveTab("chat")}
                   className="btn-book-now"
                 >
-                  <Sparkles className="w-4 h-4 mr-2" />
+                  <img src={timakLogo} alt="" className="w-5 h-5 object-contain mr-2" />
                   Start Chat
                 </Button>
               </div>
