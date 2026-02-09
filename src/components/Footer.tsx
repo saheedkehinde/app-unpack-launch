@@ -20,16 +20,16 @@ export function Footer() {
         {/* Quick Links */}
         <div className="grid grid-cols-2 gap-6 mb-8">
           <div>
-            <h4 className="font-semibold text-sidebar-foreground mb-3">Quick Links</h4>
+            <h4 className="font-semibold mb-3 bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent">Quick Links</h4>
             <div className="space-y-2">
-              <Link to="/services" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Our Services</Link>
-              <Link to="/gallery" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Gallery</Link>
-              <Link to="/bookings" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Book Event</Link>
-              <Link to="/restaurant" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Restaurant</Link>
+              <Link to="/services" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:text-white hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:px-2 hover:py-0.5 hover:rounded transition-all">Our Services</Link>
+              <Link to="/gallery" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:text-white hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:px-2 hover:py-0.5 hover:rounded transition-all">Gallery</Link>
+              <Link to="/bookings" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:text-white hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:px-2 hover:py-0.5 hover:rounded transition-all">Book Event</Link>
+              <Link to="/restaurant" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:text-white hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:px-2 hover:py-0.5 hover:rounded transition-all">Restaurant</Link>
             </div>
           </div>
           <div>
-            <h4 className="font-semibold text-sidebar-foreground mb-3">Contact</h4>
+            <h4 className="font-semibold mb-3 bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent">Contact</h4>
             <div className="space-y-2">
               <p className="flex items-center gap-2 text-sm text-sidebar-foreground/60">
                 <MapPin className="w-4 h-4 text-accent" />

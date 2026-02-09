@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { TabNavigation } from "@/components/TabNavigation";
@@ -25,9 +26,9 @@ import {
 import timakLogo from "@/assets/timak-logo.png";
 
 const mainTabs = [
-  { id: "events", label: "Find Events", icon: <Key className="w-4 h-4" /> },
-  { id: "reserve", label: "Reserve Table", icon: <CalendarDays className="w-4 h-4" /> },
-  { id: "chat", label: "Chat TimakAi", icon: <Sparkles className="w-4 h-4" /> },
+  { id: "events", label: "Find Events", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center"><Key className="w-4 h-4 text-white" /></div> },
+  { id: "reserve", label: "Reserve Table", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center"><CalendarDays className="w-4 h-4 text-white" /></div> },
+  { id: "chat", label: "Chat TimakAi", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center p-1"><img src={timakLogo} alt="" className="w-full h-full object-contain" /></div> },
 ];
 
 const upcomingEvents = [
@@ -130,27 +131,48 @@ const Index = () => {
         <div className="relative z-10 flex-1 flex flex-col justify-end px-5 pb-10 pt-28">
           <div className="max-w-lg mx-auto w-full">
             {/* Welcome Badge */}
-            <div className="mb-5 page-transition">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 border border-accent/25 backdrop-blur-md mb-4 shadow-lg shadow-accent/10">
-                <img src={timakLogo} alt="TIMAK" className="w-5 h-5 object-contain" />
-                <span className="text-xs text-accent font-semibold uppercase tracking-widest">Premium Events</span>
-              </div>
+            <div className="mb-5">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 border border-accent/25 backdrop-blur-md mb-4 shadow-lg shadow-accent/10">
+                  <img src={timakLogo} alt="TIMAK" className="w-5 h-5 object-contain" />
+                  <span className="text-xs text-accent font-semibold uppercase tracking-widest">Premium Events</span>
+                </div>
+              </motion.div>
               
               {/* Main Title */}
-              <h1 className="font-serif text-5xl md:text-6xl font-bold mb-4 drop-shadow-2xl leading-tight bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent">
+              <motion.h1
+                className="font-serif text-5xl md:text-6xl font-bold mb-4 drop-shadow-2xl leading-tight bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              >
                 TIMAK
                 <span className="block">CENTRE</span>
-              </h1>
+              </motion.h1>
               
               {/* Tagline */}
-              <p className="text-white text-base mb-3 font-medium">
+              <motion.p
+                className="text-white text-base mb-3 font-medium"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+              >
                 Where Elegance Meets Excellence
-              </p>
+              </motion.p>
               
-              <p className="text-muted-foreground text-sm flex items-center gap-2">
+              <motion.p
+                className="text-muted-foreground text-sm flex items-center gap-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+              >
                 <MapPin className="w-4 h-4 text-accent" />
                 Ilorin, Kwara State, Nigeria
-              </p>
+              </motion.p>
             </div>
 
             {/* Tab Navigation */}
