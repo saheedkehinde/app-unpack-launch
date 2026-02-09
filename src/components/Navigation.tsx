@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import timakLogo from "@/assets/timak-logo.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -24,9 +25,7 @@ export function Navigation() {
           <nav className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-amber-500 flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-accent-foreground" />
-              </div>
+              <img src={timakLogo} alt="TIMAK CENTRE" className="w-10 h-10 object-contain" />
               <span className="font-serif text-lg font-bold text-white">TIMAK</span>
             </Link>
 

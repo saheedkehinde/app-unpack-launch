@@ -22,6 +22,7 @@ import {
   Building2,
   ArrowRight,
 } from "lucide-react";
+import timakLogo from "@/assets/timak-logo.png";
 
 const mainTabs = [
   { id: "events", label: "Find Events", icon: <Key className="w-4 h-4" /> },
@@ -131,7 +132,7 @@ const Index = () => {
             {/* Welcome Badge */}
             <div className="mb-5 page-transition">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 border border-accent/25 backdrop-blur-md mb-4 shadow-lg shadow-accent/10">
-                <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+                <img src={timakLogo} alt="TIMAK" className="w-5 h-5 object-contain" />
                 <span className="text-xs text-accent font-semibold uppercase tracking-widest">Premium Events</span>
               </div>
               

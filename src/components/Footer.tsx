@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Twitter, Sparkles } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Twitter } from "lucide-react";
+import timakLogo from "@/assets/timak-logo.png";
 
 export function Footer() {
   return (
@@ -8,9 +9,7 @@ export function Footer() {
         {/* Logo & Description */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-amber-500 flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-accent-foreground" />
-            </div>
+            <img src={timakLogo} alt="TIMAK CENTRE" className="w-16 h-16 object-contain" />
           </div>
           <h3 className="font-serif text-2xl font-bold text-sidebar-foreground mb-2">TIMAK CENTRE</h3>
           <p className="text-sm text-sidebar-foreground/60 max-w-xs mx-auto">
