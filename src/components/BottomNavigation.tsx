@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, CalendarDays, Utensils, User, ImageIcon } from "lucide-react";
+import { Home, CalendarDays, Utensils, ClipboardList, ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -7,7 +7,7 @@ const navItems = [
   { href: "/bookings", icon: CalendarDays, label: "Events" },
   { href: "/restaurant", icon: Utensils, label: "Dine" },
   { href: "/gallery", icon: ImageIcon, label: "Gallery" },
-  { href: "/profile", icon: User, label: "Profile" },
+  { href: "/my-bookings", icon: ClipboardList, label: "Bookings" },
 ];
 
 export function BottomNavigation() {
