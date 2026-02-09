@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { BottomNavigation } from "@/components/BottomNavigation";
+import { BackButton } from "@/components/BackButton";
 import { SectionHeader } from "@/components/SectionHeader";
 
 const galleryImages = [
@@ -16,6 +17,7 @@ export default function Gallery() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      <BackButton />
       <main className="pt-20 pb-24">
         <div className="max-w-lg mx-auto px-4">
           <SectionHeader title="Gallery" />
