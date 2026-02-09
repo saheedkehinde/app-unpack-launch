@@ -164,13 +164,13 @@ export function AIChatButton() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "fixed bottom-24 right-4 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-xl transition-all duration-300",
+          "fixed bottom-24 right-4 z-50 flex items-center justify-center w-16 h-16 rounded-full shadow-xl transition-all duration-300",
           "bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] hover:scale-105 active:scale-95 animate-pulse-glow",
           isOpen && "rotate-180"
         )}
         aria-label={isOpen ? "Close chat" : "Open AI assistant"}
       >
-        {isOpen ? <X className="w-5 h-5 text-[#1a0a0a]" /> : <img src={timakLogo} alt="Timak AI" className="w-9 h-9 object-contain" />}
+        {isOpen ? <X className="w-5 h-5 text-[#1a0a0a]" /> : <img src={timakLogo} alt="Timak AI" className="w-11 h-11 object-contain" />}
       </button>
 
       <div
@@ -182,8 +182,8 @@ export function AIChatButton() {
         {/* Header */}
         <div className="bg-sidebar p-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center p-1">
-              <img src={timakLogo} alt="Timak AI" className="w-7 h-7 object-contain" />
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center p-1">
+              <img src={timakLogo} alt="Timak AI" className="w-9 h-9 object-contain" />
             </div>
             <div className="flex-1">
               <h3 className="font-serif text-base font-semibold text-sidebar-foreground">Timak AI</h3>
