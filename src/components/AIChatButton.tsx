@@ -12,7 +12,7 @@ export function AIChatButton({ onClick, className }: AIChatButtonProps) {
     <Button
       onClick={onClick}
       className={cn(
-        "fixed bottom-24 right-4 z-40 w-14 h-14 rounded-full bg-white hover:bg-white/90 shadow-lg shadow-accent/30 animate-pulse-glow p-2 border-2 border-accent/50",
+        "fixed bottom-24 right-4 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] hover:from-[#ffee9a]/90 hover:to-[#b88a2e]/90 shadow-lg shadow-[#b88a2e]/40 animate-pulse-glow p-2 border-2 border-[#ffee9a]/60",
         className
       )}
       size="icon"
