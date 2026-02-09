@@ -22,10 +22,10 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-sidebar-foreground mb-3">Quick Links</h4>
             <div className="space-y-2">
-              <Link to="/services" className="block text-sm text-sidebar-foreground/60 hover:text-accent transition-colors">Our Services</Link>
-              <Link to="/gallery" className="block text-sm text-sidebar-foreground/60 hover:text-accent transition-colors">Gallery</Link>
-              <Link to="/bookings" className="block text-sm text-sidebar-foreground/60 hover:text-accent transition-colors">Book Event</Link>
-              <Link to="/restaurant" className="block text-sm text-sidebar-foreground/60 hover:text-accent transition-colors">Restaurant</Link>
+              <Link to="/services" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Our Services</Link>
+              <Link to="/gallery" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Gallery</Link>
+              <Link to="/bookings" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Book Event</Link>
+              <Link to="/restaurant" className="block text-sm bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent hover:bg-clip-padding hover:bg-gradient-to-r hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-white hover:px-2 hover:py-0.5 hover:rounded transition-all">Restaurant</Link>
             </div>
           </div>
           <div>

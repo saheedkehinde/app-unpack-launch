@@ -137,13 +137,13 @@ const Index = () => {
               </div>
               
               {/* Main Title */}
-              <h1 className="font-serif text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl leading-tight">
+              <h1 className="font-serif text-5xl md:text-6xl font-bold mb-4 drop-shadow-2xl leading-tight bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent">
                 TIMAK
-                <span className="block text-accent">CENTRE</span>
+                <span className="block">CENTRE</span>
               </h1>
               
               {/* Tagline */}
-              <p className="text-foreground/80 text-base mb-3 font-medium">
+              <p className="text-white text-base mb-3 font-medium">
                 Where Elegance Meets Excellence
               </p>
               

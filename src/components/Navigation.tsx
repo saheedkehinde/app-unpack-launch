@@ -25,7 +25,7 @@ export function Navigation() {
           <nav className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <img src={timakLogo} alt="TIMAK CENTRE" className="w-10 h-10 object-contain" />
+              <img src={timakLogo} alt="TIMAK CENTRE" className="w-14 h-14 object-contain" />
               <span className="font-serif text-lg font-bold text-white">TIMAK</span>
             </Link>
 
