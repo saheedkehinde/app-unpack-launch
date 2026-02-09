@@ -134,8 +134,8 @@ export function AIChatButton() {
         {/* Header */}
         <div className="bg-sidebar p-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-sidebar" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-[#1a0a0a]" />
             </div>
             <div className="flex-1">
               <h3 className="font-serif text-base font-semibold text-sidebar-foreground">Timak AI</h3>
@@ -198,7 +198,7 @@ export function AIChatButton() {
                 <button
                   key={action.action}
                   onClick={() => handleQuickAction(action.action)}
-                  className="flex items-center gap-1.5 px-3 py-2 light:bg-gray-100 light:border-primary/20 light:text-foreground light:hover:bg-primary light:hover:text-white dark:bg-card dark:border-border dark:text-foreground dark:hover:bg-primary dark:hover:text-primary-foreground rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap border active:scale-95 hover:scale-105"
+                  className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-[#ffee9a]/20 to-[#b88a2e]/20 border-[#b88a2e]/30 text-foreground hover:from-[#ffee9a] hover:to-[#b88a2e] hover:text-[#1a0a0a] rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap border active:scale-95 hover:scale-105"
                 >
                   <Icon className="w-3.5 h-3.5" />
                   {action.label}
