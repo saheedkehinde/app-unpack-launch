@@ -20,17 +20,20 @@ export function Navigation() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="bg-gradient-to-b from-black/60 via-black/40 to-transparent backdrop-blur-sm">
+      <div className="bg-gradient-to-b from-black/70 via-black/50 to-transparent backdrop-blur-sm">
         <div className="max-w-lg mx-auto px-4">
           <nav className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <img src={timakLogo} alt="TIMAK CENTRE" className="w-14 h-14 object-contain" />
-              <span className="font-serif text-lg font-bold text-white">TIMAK</span>
+            {/* Logo + Brand */}
+            <Link to="/" className="flex items-center gap-2.5">
+              <img src={timakLogo} alt="TIMAK CENTRE" className="w-12 h-12 object-contain" />
+              <div className="flex flex-col leading-none">
+                <span className="font-serif text-base font-bold bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent tracking-wide">TIMAK</span>
+                <span className="text-[9px] text-white/60 font-medium tracking-[0.2em] uppercase">Centre</span>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-5">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
