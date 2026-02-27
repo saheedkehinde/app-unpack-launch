@@ -269,26 +269,45 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="px-4 py-8">
+      <motion.section
+        className="px-4 py-8"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="max-w-lg mx-auto">
           <div className="bg-sidebar rounded-2xl p-4 border border-sidebar-border">
             <div className="grid grid-cols-4 gap-3">
               {stats.map((stat, index) => (
-                <div key={stat.label} className="text-center relative">
+                <motion.div
+                  key={stat.label}
+                  className="text-center relative"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
+                >
                   <p className="font-serif text-xl md:text-2xl font-bold text-accent">{stat.value}</p>
                   <p className="text-[10px] text-sidebar-foreground/60 mt-0.5">{stat.label}</p>
                   {index < stats.length - 1 && (
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-8 bg-sidebar-border" />
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Section */}
-      <section className="px-4 py-6 relative">
+      <motion.section
+        className="px-4 py-6 relative"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="max-w-lg mx-auto">
           <div className="bg-muted/50 backdrop-blur-sm rounded-3xl p-6 glow-shadow-dark border border-muted/30">
             <SectionHeader
@@ -301,40 +320,45 @@ const Index = () => {
               }
             />
             <div className="grid grid-cols-2 gap-3">
-              {services.map((service) => {
+              {services.map((service, sIndex) => {
                 const Icon = service.icon;
                 return (
-                  <Link
+                  <motion.div
                     key={service.title}
-                    to={service.href}
-                    className="group relative aspect-square rounded-2xl overflow-hidden card-hover"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: sIndex * 0.1, ease: "easeOut" }}
                   >
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    {/* Multi-layer gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-sidebar via-sidebar/40 to-transparent" />
-                    <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500" />
+                    <Link
+                      to={service.href}
+                      className="group relative aspect-square rounded-2xl overflow-hidden card-hover block"
+                    >
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-sidebar via-sidebar/40 to-transparent" />
+                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500" />
 
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <div className="w-9 h-9 rounded-xl bg-accent/20 backdrop-blur-sm flex items-center justify-center mb-2 border border-accent/30 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-4 h-4 text-accent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <div className="w-9 h-9 rounded-xl bg-accent/20 backdrop-blur-sm flex items-center justify-center mb-2 border border-accent/30 group-hover:scale-110 transition-transform duration-300">
+                          <Icon className="w-4 h-4 text-accent" />
+                        </div>
+                        <h3 className="font-serif text-sm font-semibold text-white drop-shadow-md">{service.title}</h3>
+                        <p className="text-[11px] text-white/70">{service.description}</p>
                       </div>
-                      <h3 className="font-serif text-sm font-semibold text-white drop-shadow-md">{service.title}</h3>
-                      <p className="text-[11px] text-white/70">{service.description}</p>
-                    </div>
 
-                    {/* Corner accent */}
-                    <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-accent/0 group-hover:border-accent/50 transition-colors duration-500" />
-                  </Link>
+                      <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-accent/0 group-hover:border-accent/50 transition-colors duration-500" />
+                    </Link>
+                  </motion.div>
                 );
               })}
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Featured CTA - Plan Your Perfect Event */}
       <section className="px-4 py-6">
@@ -365,7 +389,7 @@ const Index = () => {
                 <Button
                   asChild
                   size="sm"
-                  className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full h-11 px-6 font-semibold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] text-white hover:from-[#b88a2e] hover:to-[#ffee9a] rounded-full h-11 px-6 font-semibold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   <Link to="/bookings">
                     Get Started
