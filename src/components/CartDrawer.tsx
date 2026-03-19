@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Drawer,
   DrawerClose,
@@ -36,6 +37,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
   const navigate = useNavigate();
   const [placing, setPlacing] = useState(false);
   const [open, setOpen] = useState(false);
+  const [notes, setNotes] = useState("");
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalAmount = cart.reduce((sum, item) => sum + item.priceNum * item.quantity, 0);
@@ -55,6 +57,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
           user_id: user.id,
           total_amount: totalAmount,
           status: "pending",
+          notes: notes.trim() || null,
         })
         .select()
         .single();
@@ -73,6 +76,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
 
       toast({ title: "Order placed! 🎉", description: `Your order of ₦${totalAmount.toLocaleString()} has been placed.` });
       onClear();
+      setNotes("");
       setOpen(false);
     } catch (err: any) {
       toast({ title: "Order failed", description: err.message, variant: "destructive" });
@@ -159,6 +163,14 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
 
         {cart.length > 0 && (
           <DrawerFooter>
+            <Textarea
+              placeholder="Special requests or notes (e.g. no onions, extra spicy...)"
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              className="resize-none text-sm bg-muted/50 border-border rounded-xl mb-2"
+              rows={2}
+              maxLength={500}
+            />
             <div className="flex items-center justify-between mb-2">
               <span className="text-muted-foreground font-medium">Total</span>
               <span className="text-xl font-bold text-foreground">₦{totalAmount.toLocaleString()}</span>
