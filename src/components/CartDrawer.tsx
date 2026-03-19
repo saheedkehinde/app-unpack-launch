@@ -76,6 +76,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
 
       toast({ title: "Order placed! 🎉", description: `Your order of ₦${totalAmount.toLocaleString()} has been placed.` });
       onClear();
+      setNotes("");
       setOpen(false);
     } catch (err: any) {
       toast({ title: "Order failed", description: err.message, variant: "destructive" });
