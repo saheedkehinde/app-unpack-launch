@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { BackButton } from "@/components/BackButton";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Button } from "@/components/ui/button";
-import { Clock, MapPin, Star, ChevronRight } from "lucide-react";
+import { Clock, MapPin, Star, ChevronRight, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { CartDrawer, type CartItem } from "@/components/CartDrawer";
+import { toast } from "@/hooks/use-toast";
 
 import pepperedSnails from "@/assets/food/peppered-snails.jpg";
 import grilledPrawns from "@/assets/food/grilled-prawns.jpg";
@@ -26,22 +27,23 @@ interface MenuItem {
   name: string;
   description: string;
   price: string;
+  priceNum: number;
   image: string;
   category: Category[];
   popular?: boolean;
 }
 
 const menuItems: MenuItem[] = [
-  { name: "Peppered Snails", description: "Spicy pan-fried snails in rich pepper sauce", price: "₦4,500", image: pepperedSnails, category: ["starters"], popular: true },
-  { name: "Grilled Prawns", description: "Succulent prawns in garlic butter sauce", price: "₦6,500", image: grilledPrawns, category: ["starters"], popular: true },
-  { name: "Jollof Rice & Chicken", description: "Classic Nigerian party jollof with grilled chicken", price: "₦5,500", image: jollofRice, category: ["main"], popular: true },
-  { name: "Pounded Yam & Egusi", description: "Traditional pounded yam with egusi soup", price: "₦4,500", image: poundedYam, category: ["main"], popular: true },
-  { name: "Pepper Soup", description: "Spicy catfish pepper soup", price: "₦4,000", image: pepperSoup, category: ["starters", "main"] },
-  { name: "Suya Platter", description: "Spiced grilled beef skewers", price: "₦4,000", image: suyaPlatter, category: ["grills"], popular: true },
-  { name: "BBQ Ribs", description: "Tender ribs with signature BBQ sauce", price: "₦8,500", image: bbqRibs, category: ["grills"], popular: true },
-  { name: "Mixed Grill", description: "Selection of grilled meats and vegetables", price: "₦12,000", image: mixedGrill, category: ["grills"] },
-  { name: "Fresh Juice", description: "Orange, pineapple, or watermelon", price: "₦1,500", image: freshJuice, category: ["drinks"] },
-  { name: "Chapman", description: "Classic Nigerian cocktail mocktail", price: "₦2,500", image: chapman, category: ["drinks"], popular: true },
+  { name: "Peppered Snails", description: "Spicy pan-fried snails in rich pepper sauce", price: "₦4,500", priceNum: 4500, image: pepperedSnails, category: ["starters"], popular: true },
+  { name: "Grilled Prawns", description: "Succulent prawns in garlic butter sauce", price: "₦6,500", priceNum: 6500, image: grilledPrawns, category: ["starters"], popular: true },
+  { name: "Jollof Rice & Chicken", description: "Classic Nigerian party jollof with grilled chicken", price: "₦5,500", priceNum: 5500, image: jollofRice, category: ["main"], popular: true },
+  { name: "Pounded Yam & Egusi", description: "Traditional pounded yam with egusi soup", price: "₦4,500", priceNum: 4500, image: poundedYam, category: ["main"], popular: true },
+  { name: "Pepper Soup", description: "Spicy catfish pepper soup", price: "₦4,000", priceNum: 4000, image: pepperSoup, category: ["starters", "main"] },
+  { name: "Suya Platter", description: "Spiced grilled beef skewers", price: "₦4,000", priceNum: 4000, image: suyaPlatter, category: ["grills"], popular: true },
+  { name: "BBQ Ribs", description: "Tender ribs with signature BBQ sauce", price: "₦8,500", priceNum: 8500, image: bbqRibs, category: ["grills"], popular: true },
+  { name: "Mixed Grill", description: "Selection of grilled meats and vegetables", price: "₦12,000", priceNum: 12000, image: mixedGrill, category: ["grills"] },
+  { name: "Fresh Juice", description: "Orange, pineapple, or watermelon", price: "₦1,500", priceNum: 1500, image: freshJuice, category: ["drinks"] },
+  { name: "Chapman", description: "Classic Nigerian cocktail mocktail", price: "₦2,500", priceNum: 2500, image: chapman, category: ["drinks"], popular: true },
 ];
 
 const categories: { id: Category; label: string }[] = [
@@ -56,10 +58,40 @@ const popularItems = menuItems.filter((item) => item.popular);
 
 export default function Restaurant() {
   const [activeCategory, setActiveCategory] = useState<Category>("all");
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const filteredItems = activeCategory === "all"
     ? menuItems
     : menuItems.filter((item) => item.category.includes(activeCategory));
+
+  const addToCart = useCallback((item: MenuItem) => {
+    setCart((prev) => {
+      const existing = prev.find((c) => c.name === item.name);
+      if (existing) {
+        return prev.map((c) =>
+          c.name === item.name ? { ...c, quantity: c.quantity + 1 } : c
+        );
+      }
+      return [...prev, { name: item.name, price: item.price, priceNum: item.priceNum, quantity: 1, image: item.image }];
+    });
+    toast({ title: `${item.name} added`, description: "Item added to your order" });
+  }, []);
+
+  const updateQuantity = useCallback((name: string, delta: number) => {
+    setCart((prev) =>
+      prev
+        .map((c) => (c.name === name ? { ...c, quantity: c.quantity + delta } : c))
+        .filter((c) => c.quantity > 0)
+    );
+  }, []);
+
+  const removeFromCart = useCallback((name: string) => {
+    setCart((prev) => prev.filter((c) => c.name !== name));
+  }, []);
+
+  const clearCart = useCallback(() => setCart([]), []);
+
+  const getItemQuantity = (name: string) => cart.find((c) => c.name === name)?.quantity || 0;
 
   return (
     <div className="min-h-screen bg-background">
@@ -103,15 +135,22 @@ export default function Restaurant() {
                   className="min-w-[140px] max-w-[140px] shrink-0"
                 >
                   <div className="relative rounded-xl overflow-hidden aspect-square">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     <div className="absolute top-2 right-2 bg-accent text-accent-foreground text-xs font-bold px-2 py-0.5 rounded-full">
                       {item.price}
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    {/* Add button */}
+                    <button
+                      onClick={() => addToCart(item)}
+                      className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-accent text-accent-foreground flex items-center justify-center shadow-md hover:scale-110 transition-transform"
+                    >
+                      {getItemQuantity(item.name) > 0 ? (
+                        <span className="text-xs font-bold">{getItemQuantity(item.name)}</span>
+                      ) : (
+                        <Plus className="w-4 h-4" />
+                      )}
+                    </button>
                   </div>
                   <h4 className="font-semibold text-foreground text-sm mt-2 truncate">{item.name}</h4>
                   <p className="text-xs text-muted-foreground truncate">{item.description}</p>
@@ -140,44 +179,74 @@ export default function Restaurant() {
 
           {/* Menu List */}
           <div className="mt-4 space-y-3">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="bg-card border border-border rounded-2xl p-3 flex items-center gap-4"
-              >
-                <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h4 className="font-semibold text-foreground truncate">{item.name}</h4>
-                    {item.popular && (
-                      <span className="text-[10px] font-bold bg-accent/20 text-accent px-2 py-0.5 rounded-full shrink-0">
-                        Popular
-                      </span>
+            {filteredItems.map((item, index) => {
+              const qty = getItemQuantity(item.name);
+              return (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="bg-card border border-border rounded-2xl p-3 flex items-center gap-4"
+                >
+                  <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-semibold text-foreground truncate">{item.name}</h4>
+                      {item.popular && (
+                        <span className="text-[10px] font-bold bg-accent/20 text-accent px-2 py-0.5 rounded-full shrink-0">
+                          Popular
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground truncate">{item.description}</p>
+                    <span className="text-accent font-bold text-sm">{item.price}</span>
+                  </div>
+                  {/* Add / quantity controls */}
+                  <div className="shrink-0">
+                    {qty > 0 ? (
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          onClick={() => updateQuantity(item.name, -1)}
+                          className="w-7 h-7 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-muted"
+                        >
+                          <span className="text-sm font-bold">−</span>
+                        </button>
+                        <span className="text-sm font-bold w-5 text-center text-foreground">{qty}</span>
+                        <button
+                          onClick={() => updateQuantity(item.name, 1)}
+                          className="w-7 h-7 rounded-full bg-accent text-accent-foreground flex items-center justify-center hover:opacity-80"
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => addToCart(item)}
+                        className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center shadow hover:scale-110 transition-transform"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground truncate">{item.description}</p>
-                  <span className="text-accent font-bold text-sm">{item.price}</span>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
-
-          {/* Reserve Button */}
-          <Button className="w-full mt-6 bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] text-accent-foreground font-semibold rounded-full hover:opacity-90">
-            Reserve a Table
-          </Button>
         </div>
       </main>
+
+      {/* Cart Drawer */}
+      <CartDrawer
+        cart={cart}
+        onUpdateQuantity={updateQuantity}
+        onRemove={removeFromCart}
+        onClear={clearCart}
+      />
+
       <Footer />
       <BottomNavigation />
     </div>
