@@ -84,10 +84,21 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="md:hidden fixed top-0 right-0 bottom-0 w-[70%] max-w-[280px] z-50 bg-background/80 backdrop-blur-xl border-l border-white/10 shadow-2xl"
+              className="md:hidden fixed top-16 right-3 z-50 bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden"
             >
-              <div className="flex flex-col h-full pt-20 px-6 pb-8">
-                <div className="flex flex-col gap-1">
+              <div className="flex flex-col px-4 py-4 w-[220px]">
+                {/* Logo + Brand Header */}
+                <div className="flex items-center gap-2.5 mb-4 px-1">
+                  <img src={timakLogo} alt="TIMAK CENTRE" className="w-10 h-10 object-contain" />
+                  <div className="flex flex-col leading-none">
+                    <span className="font-serif text-sm font-bold bg-gradient-to-r from-[#ffee9a] to-[#b88a2e] bg-clip-text text-transparent tracking-wide">TIMAK</span>
+                    <span className="text-[8px] text-white/60 font-medium tracking-[0.2em] uppercase">Centre</span>
+                  </div>
+                </div>
+
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-[#b88a2e]/30 to-transparent mb-3" />
+
+                <div className="flex flex-col gap-1.5">
                   {navLinks.map((link, index) => (
                     <motion.div
                       key={link.href}
@@ -99,10 +110,10 @@ export function Navigation() {
                         to={link.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "block py-3 px-3 rounded-xl text-base font-medium transition-colors",
+                          "block py-2.5 px-3 rounded-xl text-sm font-medium transition-all border",
                           location.pathname === link.href
-                            ? "text-accent bg-accent/10"
-                            : "text-foreground/80 hover:text-accent hover:bg-accent/5"
+                            ? "text-[#ffee9a] bg-gradient-to-r from-[#b88a2e]/20 to-[#ffee9a]/10 border-[#b88a2e]/40 shadow-sm shadow-[#b88a2e]/10"
+                            : "text-white/80 border-[#b88a2e]/15 hover:border-[#b88a2e]/30 hover:bg-[#b88a2e]/10 hover:text-[#ffee9a]"
                         )}
                       >
                         {link.label}
@@ -115,7 +126,7 @@ export function Navigation() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="mt-auto"
+                  className="mt-4"
                 >
                   <Button
                     className="btn-book-now w-full"
