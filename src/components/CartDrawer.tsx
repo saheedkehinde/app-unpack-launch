@@ -57,6 +57,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
           user_id: user.id,
           total_amount: totalAmount,
           status: "pending",
+          notes: notes.trim() || null,
         })
         .select()
         .single();
