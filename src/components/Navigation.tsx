@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import timakLogo from "@/assets/timak-logo.png";
 
 const navLinks = [
@@ -63,31 +64,71 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-background/95 backdrop-blur-md z-40">
-          <div className="flex flex-col items-center justify-center gap-6 p-8 pt-12">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-xl font-medium transition-colors",
-                  location.pathname === link.href
-                    ? "text-accent"
-                    : "text-foreground hover:text-accent"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button className="btn-book-now mt-4">
-              Book Now
-            </Button>
-          </div>
-        </div>
-      )}
+      {/* Mobile Navigation - Slide from right */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden fixed inset-0 top-0 bg-black/40 backdrop-blur-sm z-40"
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Slide-in panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="md:hidden fixed top-0 right-0 bottom-0 w-[70%] max-w-[280px] z-50 bg-background/80 backdrop-blur-xl border-l border-white/10 shadow-2xl"
+            >
+              <div className="flex flex-col h-full pt-20 px-6 pb-8">
+                <div className="flex flex-col gap-1">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.href}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 + index * 0.05 }}
+                    >
+                      <Link
+                        to={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                          "block py-3 px-3 rounded-xl text-base font-medium transition-colors",
+                          location.pathname === link.href
+                            ? "text-accent bg-accent/10"
+                            : "text-foreground/80 hover:text-accent hover:bg-accent/5"
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-auto"
+                >
+                  <Button
+                    className="btn-book-now w-full"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Book Now
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
