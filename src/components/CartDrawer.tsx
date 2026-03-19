@@ -163,6 +163,14 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
 
         {cart.length > 0 && (
           <DrawerFooter>
+            <Textarea
+              placeholder="Special requests or notes (e.g. no onions, extra spicy...)"
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              className="resize-none text-sm bg-muted/50 border-border rounded-xl mb-2"
+              rows={2}
+              maxLength={500}
+            />
             <div className="flex items-center justify-between mb-2">
               <span className="text-muted-foreground font-medium">Total</span>
               <span className="text-xl font-bold text-foreground">₦{totalAmount.toLocaleString()}</span>
