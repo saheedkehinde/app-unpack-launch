@@ -37,6 +37,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
   const navigate = useNavigate();
   const [placing, setPlacing] = useState(false);
   const [open, setOpen] = useState(false);
+  const [notes, setNotes] = useState("");
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalAmount = cart.reduce((sum, item) => sum + item.priceNum * item.quantity, 0);
