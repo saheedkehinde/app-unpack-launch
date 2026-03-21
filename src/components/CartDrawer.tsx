@@ -43,12 +43,20 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
   const handlePlaceOrder = async () => {
     setPlacing(true);
     try {
+      if (!customerName.trim()) {
+        toast({ title: "Name required", description: "Please enter your name so we can identify your order.", variant: "destructive" });
+        setPlacing(false);
+        return;
+      }
+
       const { data: order, error: orderError } = await supabase
         .from("orders")
         .insert({
           total_amount: totalAmount,
           status: "pending",
           notes: notes.trim() || null,
+          customer_name: customerName.trim().slice(0, 100),
+          customer_phone: customerPhone.trim().slice(0, 20) || null,
         } as any)
         .select()
         .single();
