@@ -110,7 +110,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
         <div className="px-4 overflow-y-auto max-h-[50vh]">
           {cart.length === 0 ? (
             <div className="text-center py-10 text-muted-foreground">
-              <ShoppingCart className="w-12 h-12 mx-auto mb-3 opacity-40" />
+              <ClipboardList className="w-12 h-12 mx-auto mb-3 opacity-40" />
               <p className="font-medium">Your cart is empty</p>
               <p className="text-sm mt-1">Add items from the menu</p>
             </div>
