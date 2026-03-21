@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
+import { Minus, Plus, ClipboardList, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -89,7 +89,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <button className="fixed bottom-20 right-4 z-40 bg-accent text-accent-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
-          <ShoppingCart className="w-6 h-6" />
+          <ClipboardList className="w-6 h-6" />
           {totalItems > 0 && (
             <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
               {totalItems}
@@ -110,7 +110,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
         <div className="px-4 overflow-y-auto max-h-[50vh]">
           {cart.length === 0 ? (
             <div className="text-center py-10 text-muted-foreground">
-              <ShoppingCart className="w-12 h-12 mx-auto mb-3 opacity-40" />
+              <ClipboardList className="w-12 h-12 mx-auto mb-3 opacity-40" />
               <p className="font-medium">Your cart is empty</p>
               <p className="text-sm mt-1">Add items from the menu</p>
             </div>
