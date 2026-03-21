@@ -28,6 +28,8 @@ interface Order {
   total_amount: number;
   status: string;
   notes: string | null;
+  customer_name: string | null;
+  customer_phone: string | null;
   created_at: string;
   order_items: { item_name: string; item_price: number; quantity: number }[];
 }
