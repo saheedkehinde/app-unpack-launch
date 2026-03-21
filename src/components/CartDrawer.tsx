@@ -164,6 +164,30 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
 
         {cart.length > 0 && (
           <DrawerFooter>
+            <div className="grid grid-cols-2 gap-2 mb-1">
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="Your name *"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  maxLength={100}
+                  className="w-full pl-9 pr-3 py-2.5 text-sm bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
+                />
+              </div>
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input
+                  type="tel"
+                  placeholder="Phone number"
+                  value={customerPhone}
+                  onChange={(e) => setCustomerPhone(e.target.value)}
+                  maxLength={20}
+                  className="w-full pl-9 pr-3 py-2.5 text-sm bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
+                />
+              </div>
+            </div>
             <Textarea
               placeholder="Special requests or notes (e.g. no onions, extra spicy...)"
               value={notes}
