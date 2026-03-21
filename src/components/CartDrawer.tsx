@@ -89,7 +89,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <button className="fixed bottom-20 right-4 z-40 bg-accent text-accent-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
-          <ShoppingCart className="w-6 h-6" />
+          <ClipboardList className="w-6 h-6" />
           {totalItems > 0 && (
             <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
               {totalItems}
