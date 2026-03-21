@@ -28,6 +28,8 @@ interface Order {
   total_amount: number;
   status: string;
   notes: string | null;
+  customer_name: string | null;
+  customer_phone: string | null;
   created_at: string;
   order_items: { item_name: string; item_price: number; quantity: number }[];
 }
@@ -46,7 +48,7 @@ export default function MyBookings() {
     try {
       const [bookingsRes, ordersRes] = await Promise.all([
         supabase.from("bookings").select("*").order("created_at", { ascending: false }),
-        supabase.from("orders").select("*, order_items(item_name, item_price, quantity)").order("created_at", { ascending: false }),
+        supabase.from("orders").select("*, order_items(item_name, item_price, quantity)").order("created_at", { ascending: false }) as any,
       ]);
 
       setBookings(bookingsRes.data || []);
@@ -127,9 +129,12 @@ export default function MyBookings() {
                         <ShoppingBag className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-foreground">Food Order</h3>
+                        <h3 className="font-semibold text-foreground">
+                          {order.customer_name ? `${order.customer_name}'s Order` : "Food Order"}
+                        </h3>
                         <p className="text-xs text-muted-foreground">
                           {format(new Date(order.created_at), "MMM dd, yyyy · h:mm a")}
+                          {order.customer_phone && ` · ${order.customer_phone}`}
                         </p>
                       </div>
                     </div>
