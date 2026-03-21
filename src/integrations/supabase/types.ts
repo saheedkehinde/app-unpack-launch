@@ -28,7 +28,7 @@ export type Database = {
           title: string
           total_amount: number | null
           updated_at: string
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           booking_type: Database["public"]["Enums"]["booking_type"]
@@ -43,7 +43,7 @@ export type Database = {
           title: string
           total_amount?: number | null
           updated_at?: string
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           booking_type?: Database["public"]["Enums"]["booking_type"]
@@ -58,7 +58,7 @@ export type Database = {
           title?: string
           total_amount?: number | null
           updated_at?: string
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -105,7 +105,7 @@ export type Database = {
           status: string
           total_amount: number
           updated_at: string
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -114,7 +114,7 @@ export type Database = {
           status?: string
           total_amount?: number
           updated_at?: string
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -123,7 +123,7 @@ export type Database = {
           status?: string
           total_amount?: number
           updated_at?: string
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
