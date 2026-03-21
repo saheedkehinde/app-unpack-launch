@@ -11,10 +11,8 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export interface CartItem {
@@ -33,8 +31,6 @@ interface CartDrawerProps {
 }
 
 export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDrawerProps) {
-  const { user } = useAuth();
-  const navigate = useNavigate();
   const [placing, setPlacing] = useState(false);
   const [open, setOpen] = useState(false);
   const [notes, setNotes] = useState("");
@@ -43,22 +39,15 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemove, onClear }: CartDr
   const totalAmount = cart.reduce((sum, item) => sum + item.priceNum * item.quantity, 0);
 
   const handlePlaceOrder = async () => {
-    if (!user) {
-      toast({ title: "Please sign in", description: "You need to be signed in to place an order." });
-      navigate("/login");
-      return;
-    }
-
     setPlacing(true);
     try {
       const { data: order, error: orderError } = await supabase
         .from("orders")
         .insert({
-          user_id: user.id,
           total_amount: totalAmount,
           status: "pending",
           notes: notes.trim() || null,
-        })
+        } as any)
         .select()
         .single();
 
