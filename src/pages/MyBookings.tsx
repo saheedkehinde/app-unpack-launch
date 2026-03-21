@@ -129,9 +129,12 @@ export default function MyBookings() {
                         <ShoppingBag className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-foreground">Food Order</h3>
+                        <h3 className="font-semibold text-foreground">
+                          {order.customer_name ? `${order.customer_name}'s Order` : "Food Order"}
+                        </h3>
                         <p className="text-xs text-muted-foreground">
                           {format(new Date(order.created_at), "MMM dd, yyyy · h:mm a")}
+                          {order.customer_phone && ` · ${order.customer_phone}`}
                         </p>
                       </div>
                     </div>
