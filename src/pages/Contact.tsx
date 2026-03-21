@@ -42,8 +42,31 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Visit Us</p>
-                <p className="font-medium text-foreground">ITA-ALAMU, Ajase-Ipo Road, Ilorin</p>
+              <p className="font-medium text-foreground">ITA-ALAMU, Ajase-Ipo Road, Ilorin</p>
               </div>
+            </div>
+
+            {/* Google Map Embed */}
+            <div className="mt-6 rounded-2xl overflow-hidden border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0!2d4.55!3d8.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOCswMCcwMC4wIk4gNCswMCcwMC4wIkU!5e0!3m2!1sen!2sng!4v1"
+                width="100%"
+                height="220"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="TIMAK CENTRE Location"
+              />
+              <a
+                href="https://maps.app.goo.gl/7rZSzuf8GNTPWXgP6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-3 bg-card text-accent font-medium text-sm hover:bg-accent/10 transition-colors"
+              >
+                <MapPin className="w-4 h-4" />
+                Open in Google Maps
+              </a>
             </div>
           </div>
 
