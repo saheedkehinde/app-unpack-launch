@@ -48,7 +48,7 @@ export default function MyBookings() {
     try {
       const [bookingsRes, ordersRes] = await Promise.all([
         supabase.from("bookings").select("*").order("created_at", { ascending: false }),
-        supabase.from("orders").select("*, order_items(item_name, item_price, quantity)").order("created_at", { ascending: false }),
+        supabase.from("orders").select("*, order_items(item_name, item_price, quantity)").order("created_at", { ascending: false }) as any,
       ]);
 
       setBookings(bookingsRes.data || []);
