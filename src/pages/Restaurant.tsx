@@ -135,7 +135,7 @@ export default function Restaurant() {
                   className="min-w-[140px] max-w-[140px] shrink-0"
                 >
                   <div className="relative rounded-xl overflow-hidden aspect-square">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <img src={item.image} alt={item.name} loading="lazy" className="w-full h-full object-cover" />
                     <div className="absolute top-2 right-2 bg-accent text-accent-foreground text-xs font-bold px-2 py-0.5 rounded-full">
                       {item.price}
                     </div>
