@@ -258,26 +258,7 @@ const Index = () => {
                 ))}
               </div>
             </>
-          ) : (
-            <>
-              {/* Chat Section */}
-              <div className="text-center py-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/90 border border-accent/30 mb-4 shadow-lg">
-                  <img src={timakLogo} alt="Timak AI" className="w-12 h-12 object-contain" />
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
-                  Timak AI Assistant
-                </h3>
-                <p className="text-muted-foreground mb-6 max-w-xs mx-auto">
-                  Have questions about events, reservations, or services? Our AI is here to help 24/7.
-                </p>
-                <Button className="btn-book-now">
-                  <img src={timakLogo} alt="" className="w-5 h-5 object-contain mr-2" />
-                  Start Chatting
-                </Button>
-              </div>
-            </>
-          )}
+          ) : null}
         </div>
       </section>
 
