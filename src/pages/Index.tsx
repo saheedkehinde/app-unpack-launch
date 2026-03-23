@@ -28,7 +28,6 @@ import timakLogo from "@/assets/timak-logo.png";
 const mainTabs = [
   { id: "events", label: "Find Events", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center"><Key className="w-4 h-4 text-white" /></div> },
   { id: "reserve", label: "Reserve Table", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center"><CalendarDays className="w-4 h-4 text-white" /></div> },
-  { id: "chat", label: "Chat TimakAi", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center p-1"><img src={timakLogo} alt="" className="w-full h-full object-contain" /></div> },
 ];
 
 const upcomingEvents = [
