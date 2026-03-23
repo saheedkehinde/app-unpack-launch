@@ -7,7 +7,7 @@ import { TabNavigation } from "@/components/TabNavigation";
 import { EventCard } from "@/components/EventCard";
 import { ReservationCard } from "@/components/ReservationCard";
 import { SectionHeader } from "@/components/SectionHeader";
-import { AIChatButton } from "@/components/AIChatButton";
+
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,7 +28,6 @@ import timakLogo from "@/assets/timak-logo.png";
 const mainTabs = [
   { id: "events", label: "Find Events", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center"><Key className="w-4 h-4 text-white" /></div> },
   { id: "reserve", label: "Reserve Table", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center"><CalendarDays className="w-4 h-4 text-white" /></div> },
-  { id: "chat", label: "Chat TimakAi", icon: <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ffee9a] to-[#b88a2e] flex items-center justify-center p-1"><img src={timakLogo} alt="" className="w-full h-full object-contain" /></div> },
 ];
 
 const upcomingEvents = [
@@ -259,26 +258,7 @@ const Index = () => {
                 ))}
               </div>
             </>
-          ) : (
-            <>
-              {/* Chat Section */}
-              <div className="text-center py-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/90 border border-accent/30 mb-4 shadow-lg">
-                  <img src={timakLogo} alt="Timak AI" className="w-12 h-12 object-contain" />
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
-                  Timak AI Assistant
-                </h3>
-                <p className="text-muted-foreground mb-6 max-w-xs mx-auto">
-                  Have questions about events, reservations, or services? Our AI is here to help 24/7.
-                </p>
-                <Button className="btn-book-now">
-                  <img src={timakLogo} alt="" className="w-5 h-5 object-contain mr-2" />
-                  Start Chatting
-                </Button>
-              </div>
-            </>
-          )}
+          ) : null}
         </div>
       </section>
 
@@ -425,32 +405,29 @@ const Index = () => {
         </div>
       </section>
 
-      {/* AI Assistant Promo */}
+      {/* About Timak Centre */}
       <section className="px-4 py-6">
         <div className="max-w-lg mx-auto">
           <div className="bg-sidebar rounded-2xl p-5 border border-accent relative overflow-hidden">
-            {/* Decorative gradient */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
             <div className="flex items-start gap-4 relative">
               <div className="w-14 h-14 rounded-2xl bg-white/90 flex items-center justify-center shrink-0 border border-accent/30 shadow-md">
-                <img src={timakLogo} alt="Timak AI" className="w-10 h-10 object-contain" />
+                <img src={timakLogo} alt="TIMAK" className="w-10 h-10 object-contain" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-serif text-lg font-semibold text-sidebar-foreground mb-1">
-                  Meet Timak AI
+                  About Timak Centre
                 </h3>
-                <p className="text-sm text-sidebar-foreground/60 mb-4">
-                  Have questions? Our AI assistant is available 24/7 to help you plan your event.
+                <p className="text-sm text-sidebar-foreground/60 mb-3">
+                  TIMAK CENTRE is a premier event and hospitality destination offering world-class event halls, fine dining, and exceptional service for weddings, corporate events, and celebrations of all kinds.
                 </p>
-                <Button
-                  size="sm"
-                  onClick={() => setActiveTab("chat")}
-                  className="btn-book-now"
-                >
-                  <img src={timakLogo} alt="" className="w-5 h-5 object-contain mr-2" />
-                  Start Chat
-                </Button>
+                <Link to="/contact">
+                  <Button size="sm" className="btn-book-now">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Visit Us
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -523,7 +500,7 @@ const Index = () => {
 
       <Footer />
       <BottomNavigation />
-      <AIChatButton />
+      
     </main>
   );
 };
