@@ -7,7 +7,7 @@ import { TabNavigation } from "@/components/TabNavigation";
 import { EventCard } from "@/components/EventCard";
 import { ReservationCard } from "@/components/ReservationCard";
 import { SectionHeader } from "@/components/SectionHeader";
-import { AIChatButton } from "@/components/AIChatButton";
+
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
