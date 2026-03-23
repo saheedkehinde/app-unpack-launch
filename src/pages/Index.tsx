@@ -503,7 +503,7 @@ const Index = () => {
 
       <Footer />
       <BottomNavigation />
-      <AIChatButton />
+      
     </main>
   );
 };
