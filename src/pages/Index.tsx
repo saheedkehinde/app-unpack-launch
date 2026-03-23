@@ -405,32 +405,29 @@ const Index = () => {
         </div>
       </section>
 
-      {/* AI Assistant Promo */}
+      {/* About Timak Centre */}
       <section className="px-4 py-6">
         <div className="max-w-lg mx-auto">
           <div className="bg-sidebar rounded-2xl p-5 border border-accent relative overflow-hidden">
-            {/* Decorative gradient */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
             <div className="flex items-start gap-4 relative">
               <div className="w-14 h-14 rounded-2xl bg-white/90 flex items-center justify-center shrink-0 border border-accent/30 shadow-md">
-                <img src={timakLogo} alt="Timak AI" className="w-10 h-10 object-contain" />
+                <img src={timakLogo} alt="TIMAK" className="w-10 h-10 object-contain" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-serif text-lg font-semibold text-sidebar-foreground mb-1">
-                  Meet Timak AI
+                  About Timak Centre
                 </h3>
-                <p className="text-sm text-sidebar-foreground/60 mb-4">
-                  Have questions? Our AI assistant is available 24/7 to help you plan your event.
+                <p className="text-sm text-sidebar-foreground/60 mb-3">
+                  TIMAK CENTRE is a premier event and hospitality destination offering world-class event halls, fine dining, and exceptional service for weddings, corporate events, and celebrations of all kinds.
                 </p>
-                <Button
-                  size="sm"
-                  onClick={() => setActiveTab("chat")}
-                  className="btn-book-now"
-                >
-                  <img src={timakLogo} alt="" className="w-5 h-5 object-contain mr-2" />
-                  Start Chat
-                </Button>
+                <Link to="/contact">
+                  <Button size="sm" className="btn-book-now">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Visit Us
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
